@@ -20,11 +20,21 @@
     https://www.arduino.cc/reference/en/#variables
     https://www.arduino.cc/reference/en/language/variables/data-types/stringobject/
 */
+int counter = 0;
+int    count       = 3.7;          // whole numbers
+float  temperature = 20.9875;        // decimal numbers
+long   bigNumber   = 84;      // large whole numbers
+bool   isOn        = false;        // true or false
+String deviceName  = "My Arduino"; // text
 
 void setup() {
-
+  Serial.begin(115200);
+  Serial.println("Starting counter demo");
+  counter = 100;                 // setup() can use it
 }
 
 void loop() {
-
+  counter = counter + 1;         // loop() can use it too
+  Serial.println(counter);
+  delay(500);
 }
