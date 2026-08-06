@@ -41,9 +41,25 @@ const int BUTTON_PIN = 4;  // Grove Button on D4
 const int LED_PIN = 6;     // Grove LED on D6
 
 void setup() {
-
+  pinMode(LED_PIN, OUTPUT);
+  pinMode(BUTTON_PIN, INPUT);   // this pin will RECEIVE signals
+  Serial.begin(115200);
 }
 
 void loop() {
+  int reading = random(0, 100);
+  Serial.print("Reading: ");
+  Serial.println(reading);
 
+  if (reading > 80) {
+    Serial.println("  VERY HIGH");
+  } else if (reading > 50) {
+    Serial.println("  HIGH");
+  } else if (reading > 20) {
+    Serial.println("  MEDIUM");
+  } else {
+    Serial.println("  LOW");
+  }
+
+  delay(1000);
 }
