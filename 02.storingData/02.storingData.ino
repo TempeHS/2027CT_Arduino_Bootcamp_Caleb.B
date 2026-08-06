@@ -30,7 +30,7 @@ String deviceName  = "My Arduino"; // text
 void setup() {
   Serial.begin(115200);
   Serial.println("Starting counter demo");
-  counter = 100;                 // setup() can use it
+  counter = 200;                 // setup() can use it
 }
 
 void loop() {
