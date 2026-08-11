@@ -42,9 +42,22 @@ const int LED_PIN = 6;     // Grove LED on D6 (PWM)
 const int BUZZER_PIN = 5;  // Grove Buzzer on D5 (PWM)
 
 void setup() {
-
+  Serial.begin(115200);
+  Serial.println(7 / 2);        // 3 ?
+  Serial.println(7.0 / 2);      // 3.5 ?
+  Serial.println(2 + 3 * 4);    // 14 ?
+  Serial.println((2 + 3) * 4);  // 20 ?
+  Serial.println(7 % 3);        // 1 ?
+  // note: analogue pins need NO pinMode for reading
 }
 
 void loop() {
 
 }
+
+/*
+  Sensor          Min seen   Max seen   How I tested
+  Potentiometer   0          1022       full turn each way
+  Light sensor    ...        ...        covered / phone torch
+  Sound sensor    ...        ...        quiet room / clapping
+*/
