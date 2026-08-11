@@ -43,16 +43,17 @@ const int BUZZER_PIN = 5;  // Grove Buzzer on D5 (PWM)
 
 void setup() {
   Serial.begin(115200);
-  Serial.println(7 / 2);        // 3 ?
-  Serial.println(7.0 / 2);      // 3.5 ?
-  Serial.println(2 + 3 * 4);    // 14 ?
-  Serial.println((2 + 3) * 4);  // 20 ?
-  Serial.println(7 % 3);        // 1 ?
-  // note: analogue pins need NO pinMode for reading
 }
 
 void loop() {
-
+  analogWrite(LED_PIN, 0);
+  delay(1000);
+  analogWrite(LED_PIN, 64);    // 25 percent duty
+  delay(1000);
+  analogWrite(LED_PIN, 127);   // 50 percent duty
+  delay(1000);
+  analogWrite(LED_PIN, 255);   // always on
+  delay(1000);
 }
 
 /*
