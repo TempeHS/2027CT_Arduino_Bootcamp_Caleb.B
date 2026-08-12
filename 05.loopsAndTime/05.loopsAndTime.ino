@@ -39,7 +39,13 @@ const int BUZZER_PIN = 5;  // Grove Buzzer on D5
 const int LED_PIN = 6;     // Grove LED on D6
 
 void setup() {
+  Serial.begin(115200);
 
+  int countdown = 5;
+do {
+  Serial.println(countdown);
+  delay(500);
+} while (countdown > 0);
 }
 
 void loop() {
