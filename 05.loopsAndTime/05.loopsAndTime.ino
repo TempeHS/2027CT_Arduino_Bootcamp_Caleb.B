@@ -38,16 +38,32 @@ const int BUTTON_PIN = 4;  // Grove Button on D4
 const int BUZZER_PIN = 5;  // Grove Buzzer on D5
 const int LED_PIN = 6;     // Grove LED on D6
 
-void setup() {
-  Serial.begin(115200);
+unsigned long previousBlink = 0;
+const long INTERVAL = 1000;
+int ledState = LOW;
 
-  int countdown = 5;
-do {
-  Serial.println(countdown);
-  delay(500);
-} while (countdown > 0);
+void setup() {
+  pinMode(LED_PIN, OUTPUT);
+  pinMode(BUTTON_PIN, INPUT);
+  pinMode(BUZZER_PIN, OUTPUT);
+  Serial.begin(115200);
+  for (int i = 0; i < 5; i++) {
+    Serial.println(random(1, 7));   // dice roll: 1 to 6
+  }
 }
 
 void loop() {
+  unsigned long now = millis();
 
+  if (now - previousBlink >= INTERVAL) {
+    previousBlink = now;
+    ledState = !ledState;            // flip HIGH to LOW and back
+    digitalWrite(LED_PIN, ledState);
+  }
+
+  if (digitalRead(BUTTON_PIN) == HIGH) {
+    Serial.println("Button pressed!");
+  }
 }
+
+
