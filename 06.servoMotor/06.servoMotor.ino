@@ -35,7 +35,6 @@
 const int SERVO_PIN = 3;  // Grove connector to D3 (PWM capable)
 const int POT_PIN = A0;   // Grove Potentiometer on A0
 
-Servo myServo;
 
 Servo myServo;
 
@@ -45,4 +44,17 @@ void setup() {
 }
 
 void loop() {
+void smoothMove(int fromAngle, int toAngle); {
+  if (fromAngle < toAngle) {
+    for (int a = fromAngle; a <= toAngle; a++) {
+      myServo.write(a);
+      delay(15);
+    }
+  } else {
+    for (int a = fromAngle; a >= toAngle; a--) {
+      myServo.write(a);
+      delay(15);
+    }
+  }
+}
 }
