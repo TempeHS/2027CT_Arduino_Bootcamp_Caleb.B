@@ -53,9 +53,13 @@ int classifyZone(int distance, int nearLimit, int farLimit) {
     return 1;              // warning
   }
   return 2;                // safe
+}
 
+  int showAlert() {
+  return ultrasonic.read();
+}
 
-void loop(); {
+void loop() {
   int distance = readDistance();
   int zone = classifyZone(distance, 10, 30);
   showAlert(zone);
