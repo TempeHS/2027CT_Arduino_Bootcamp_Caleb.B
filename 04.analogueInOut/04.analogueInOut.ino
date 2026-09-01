@@ -46,16 +46,19 @@ void setup() {
 }
 
 void loop() {
-  analogWrite(LED_PIN, 0);
-  delay(1000);
-  analogWrite(LED_PIN, 64);    // 25 percent duty
-  delay(1000);
-  analogWrite(LED_PIN, 127);   // 50 percent duty
-  delay(1000);
-  analogWrite(LED_PIN, 255);   // always on
-  delay(1000);
-}
+  int potValue = analogRead(POT_PIN);             // 0 to 1023
+  int ledBrightness = map(potValue, 0, 1023, 0, 255); // scale to PWM range
+  ledBrightness = constrain(ledBrightness, 0, 255);   // safety clamp
 
+  analogWrite(LED_PIN, ledBrightness);
+
+  Serial.print("Pot:");
+  Serial.print(potValue);
+  Serial.print(",LED:");
+  Serial.println(ledBrightness);
+
+  delay(50); // small delay for readable output
+}
 /*
   Sensor          Min seen   Max seen   How I tested
   Potentiometer   0          1022       full turn each way
